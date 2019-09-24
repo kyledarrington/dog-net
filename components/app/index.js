@@ -7,9 +7,6 @@ class App extends React.Component{
         return (
             <div>
                 <NavBar />
-                <h1>
-                    Hello World
-                </h1>
                 <NewsfeedContainer />
             </div>
         )
