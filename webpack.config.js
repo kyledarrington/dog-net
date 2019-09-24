@@ -9,7 +9,7 @@ module.exports = {
           },
           {
               test: /\.(scss)$/,
-              use: ['sass-loader']
+              use: ['style-loader', 'css-loader', 'sass-loader']
           }
       ]
     },
