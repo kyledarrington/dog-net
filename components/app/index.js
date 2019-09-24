@@ -1,5 +1,6 @@
 import React from 'react'
 import NavBar from '../navbar'
+import NewsfeedContainer from '../newsfeed'
 
 class App extends React.Component{
     render(){
@@ -9,6 +10,7 @@ class App extends React.Component{
                 <h1>
                     Hello World
                 </h1>
+                <NewsfeedContainer />
             </div>
         )
     }
