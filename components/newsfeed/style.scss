@@ -1,0 +1,33 @@
+#newsfeed{
+    width:33%;
+    margin:auto;
+}
+
+.post-container{
+    margin: 1rem 0;
+    background-color:#F9F9F9;
+    max-width: 475px;
+    padding: 1rem .5rem 1rem 1rem;
+}
+
+.post-user-icon{
+    display:inline-block;
+    vertical-align: top;
+    width:60px;
+    img{
+        border-radius:100%
+    }
+}
+.post-user-info{
+    display:inline-block;
+    padding-top:.2rem;
+
+}
+.post-content-container{
+    display: inline-block;
+    margin-left: 60px;
+}
+.post-image{
+    margin-top:.5rem;
+}
+

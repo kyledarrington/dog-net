@@ -1,5 +1,6 @@
 import React from 'react'
 import Newsfeed from './newsfeed.js'
+import './style.scss'
 
 class NewsfeedContainer extends React.Component{
     constructor(props){
@@ -8,16 +9,18 @@ class NewsfeedContainer extends React.Component{
             posts : [
                 {
                     text: 'Test Post 1!',
+                    imgSrc: 'http://lorempixel.com/400/300/animals',
                     user : {
                         fullName: 'Kyle Arrington',
-                        imgSrc: 'https://picsum.photos/50'
+                        imgSrc: 'http://lorempixel.com/45/45/people'
                     },
                 },
                 {
                     text: 'Test Post 2!',
+                    imgSrc: 'http://lorempixel.com/400/300/animals',
                     user : {
                         fullName: 'Elanor Shellstrop',
-                        imgSrc: 'https://picsum.photos/50'
+                        imgSrc: 'http://lorempixel.com/45/45/people'
                     },
                 }
             ]
