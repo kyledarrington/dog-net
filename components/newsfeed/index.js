@@ -9,18 +9,18 @@ class NewsfeedContainer extends React.Component{
             posts : [
                 {
                     text: 'Test Post 1!',
-                    imgSrc: 'http://lorempixel.com/400/300/animals',
+                    imgSrc: 'http://picsum.photos/400/300',
                     user : {
                         fullName: 'Kyle Arrington',
-                        imgSrc: 'http://lorempixel.com/45/45/people'
+                        imgSrc: 'http://picsum.photos/45/'
                     },
                 },
                 {
                     text: 'Test Post 2!',
-                    imgSrc: 'http://lorempixel.com/400/300/animals',
+                    imgSrc: 'http://picsum.photos/400/300',
                     user : {
                         fullName: 'Elanor Shellstrop',
-                        imgSrc: 'http://lorempixel.com/45/45/people'
+                        imgSrc: 'http://picsum.photos/45/'
                     },
                 }
             ]
