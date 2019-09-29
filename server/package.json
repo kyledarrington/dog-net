@@ -1,0 +1,28 @@
+{
+  "name": "dog-net-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyledarrington/dog-net.git"
+  },
+  "author": "Kyle D. Arrington",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kyledarrington/dog-net/issues"
+  },
+  "homepage": "https://github.com/kyledarrington/dog-net#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.19.4",
+    "sqlite3": "^4.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0"
+  }
+}
