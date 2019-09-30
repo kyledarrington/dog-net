@@ -5,6 +5,7 @@ exports.up = async function(knex) {
             .createTable('photos', function(table){
                 table.increments('id');
                 table.integer('user_id').notNullable();
+                table.enu('type', ['post', 'portrait']);
                 table.string('img_src', 255).notNullable();
                 table.integer('size_kb').notNullable();
                 table.date('date_added');
