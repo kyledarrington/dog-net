@@ -13,7 +13,6 @@ exports.seed = async (knex) => {
       
       let portraitMap = {}
       for (var p of portraits) portraitMap[p.user_id] = p.id
-      console.log(portraitMap)
       
       //Generate 5 Dummy Users
       while (i <= config.numberOf.users){
@@ -24,7 +23,6 @@ exports.seed = async (knex) => {
       
       //Generate one Dev User with simple credentials
       rows.push(await newDevUser('dev@dognet.dev', 'dognet'))
-      console.log(rows)
       
       //Insert generated users. 
       await knex('users').insert(rows)
