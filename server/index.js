@@ -6,7 +6,9 @@ const knexConfig = require('../knexfile.js')[environment]
 
 const knex = require('knex')(knexConfig)
 
-var knexInit = async () => {
+knexInit()
+
+async function knexInit() {
     try{
         await knex.migrate.latest()
         await knex.seed.run()
@@ -16,6 +18,3 @@ var knexInit = async () => {
         console.error(err);
     }
 }
-
-knexInit()
-
