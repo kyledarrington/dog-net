@@ -8,22 +8,21 @@ class Newsfeed extends React.Component{
     }
     posts(){
         const postArray = this.props.posts
-        const user = this.props.user
         let elements = []
         for (var i in postArray){
             let post = postArray[i]
             let e = (
                 <div className="post-container" key={i}>
                     <div className="post-user-container">
-                        <div className="post-user-icon"><img src={post.user.imgSrc} alt={post.user.fullName} className="post-icon"/></div>
-                        <div className="post-user-info"><span>{post.user.fullName}</span></div>
+                        <div className="post-user-icon"><img src={post.userImgSrc} alt={post.userFullName} className="post-icon"/></div>
+                        <div className="post-user-info"><span>{post.userFullName}</span></div>
                     </div>
                     <div className="post-content-container">
                         <div className="post-text">
-                            <span>{post.text}</span>
+                            <span>{post.content}</span>
                         </div>
                         <div className="post-image">
-                            <img src={post.imgSrc} alt={post.text} />
+                            <img src={post.imgSrc} alt={post.content} />
                         </div>
                     </div>
 

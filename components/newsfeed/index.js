@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import axios from 'axios'
 import Newsfeed from './newsfeed.js'
 import './style.scss'
 
@@ -6,29 +8,23 @@ class NewsfeedContainer extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            posts : [
-                {
-                    text: 'Test Post 1!',
-                    imgSrc: 'http://picsum.photos/400/300',
-                    user : {
-                        fullName: 'Kyle Arrington',
-                        imgSrc: 'http://picsum.photos/45/'
-                    },
-                },
-                {
-                    text: 'Test Post 2!',
-                    imgSrc: 'http://picsum.photos/400/300',
-                    user : {
-                        fullName: 'Elanor Shellstrop',
-                        imgSrc: 'http://picsum.photos/45/'
-                    },
-                }
-            ]
+            posts: []
+        }
+    }
+    async componentDidMount(){
+        console.log('mounted');
+        if (!this.props.user.token) return
+        let queriedPosts = (await axios.get('http://localhost:8081/feed?page=1&token=' + user.token)).data;
+        if (queriedPosts){
+            this.setState({posts: queriedPosts})
         }
     }
     render(){
-        return <Newsfeed posts={this.state.posts} user={this.state.user} />
+        return <Newsfeed posts={this.state.posts} />
     }
 }
     
-export default NewsfeedContainer
+const mapStateToProps = state => ({
+    user: state.user
+})    
+export default connect(mapStateToProps)(NewsfeedContainer)
