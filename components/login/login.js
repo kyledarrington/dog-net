@@ -1,22 +1,23 @@
 import React from 'react'
+import Axios from 'axios'
 
 class Login extends React.Component{
     render(){
         return (
             <div>
-                <form action="">
+                <form id="login-form">
                     <div>
-                        <label htmlFor="">User</label>
-                        <input type="text"/>
+                        <label htmlFor="email">Email</label>
+                        <input type="text" name="email" placeholder="email" />
                     </div>
                     <div>
-                        <label htmlFor="">Password</label>
-                        <input type="text"/>
-                    </div>
-                    <div>
-                        <button>Login</button>
+                        <label htmlFor="password">Password</label>
+                        <input type="text" name="password" placeholder="password" />
                     </div>
                 </form>
+                <div>
+                    <button onClick={ this.props.onClick }>Login</button>
+                </div>
             </div>
         )
     }

@@ -1,23 +1,34 @@
 const express = require('express')
 const app = express()
-const port = 8080
+const port = 8081
+const cors = require('cors')
 const environment = process.env.ENVIRONMENT || 'development'
 const knexConfig = require('../knexfile.js')[environment]
 const db = require('./local/database')
-const auth = require('.local/authentication')
+const auth = require('./local/authenticate')
 
 const knex = require('knex')(knexConfig)
 
 knexInit()
 
+app.use(cors())
 app.use(express.json())
 
+
 app.post('/login', async (req, res) => {
-    const data = req.body,
-          user = await db.loginQuery(data.email),
-          token = (user != null) ? auth.getLoginToken(user, data.password) : null
-    return token
+    try{
+        const data = req.body,
+              user = await db.loginQuery(data.email, knex),
+              token = (user != null) ? await auth.getLoginToken(user, data.password) : null
+        res.send(token)
+    }
+    catch(err){
+        console.error(err)
+        res.send(err)
+    }
 }) 
+
+app.listen(port, () => console.log(`Listening on port ${port}.`))
 
 async function knexInit() {
     try{
