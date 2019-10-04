@@ -13,7 +13,7 @@ class Newsfeed extends React.Component{
         for (var i in postArray){
             let post = postArray[i]
             let e = (
-                <div className="post-container">
+                <div className="post-container" key={i}>
                     <div className="post-user-container">
                         <div className="post-user-icon"><img src={post.user.imgSrc} alt={post.user.fullName} className="post-icon"/></div>
                         <div className="post-user-info"><span>{post.user.fullName}</span></div>

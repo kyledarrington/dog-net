@@ -4,9 +4,6 @@ const bcrypt = require('bcrypt')
 
 module.exports = {
     getLoginToken : async (user, password) => {
-        let userQueryResult = 
-        if (userQueryResult.length == 0) return false
-        let user = userQueryResult[0]
         let match = bcrypt.compare(password, user.password_hash)
         if (match){
             const payload = {
@@ -22,7 +19,7 @@ module.exports = {
             }
             const SECRET = process.env.JWT_PRIVATE
             const token = await jwt.sign(payload, SECRET, options)
-            return
+            return token
         }
     }
 }

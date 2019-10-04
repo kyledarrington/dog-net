@@ -5,7 +5,7 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './dognet-dev.sql'
+      filename: __dirname + '/dognet-dev.db'
     },
     migrations:{
       directory: __dirname + '/database/migrations'
