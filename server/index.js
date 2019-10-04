@@ -26,7 +26,20 @@ app.post('/login', async (req, res) => {
         console.error(err)
         res.send(err)
     }
-}) 
+})
+
+app.get('/feed', async (req, res) => {
+    try {
+        const data = req.params,
+              userData = await auth.verify(data.token),
+              posts = database.newsfeedQuery(data.page, userData.userId);
+        console.log(posts);
+        res.send(posts);
+    }
+    catch(err){
+        
+    }
+})
 
 app.listen(port, () => console.log(`Listening on port ${port}.`))
 

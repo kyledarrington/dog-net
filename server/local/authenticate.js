@@ -21,5 +21,15 @@ module.exports = {
             const token = await jwt.sign(payload, SECRET, options)
             return token
         }
+    },
+    verifyToken : async (token) => {
+        try{
+            const SECRET = process.env.JWT_PRIVATE
+            return await jwt.verify(token, SECRET)
+        }
+        catch(err){
+            console.error(err.message);
+            return null
+        }
     }
 }
