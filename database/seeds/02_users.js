@@ -7,7 +7,7 @@ exports.seed = async (knex) => {
   try{
       await knex('users').del()
       let rows = [],          
-          i = 1;
+          i = 2;
       
       var portraits  = await knex.select("id", "user_id").from('photos').where("type", "=", "portrait")
       
@@ -48,7 +48,7 @@ const newDummyUser = async (userId, portraitId) => {
 const newDevUser = async (email, password) => {
     let hash = await bcrypt.hash(email, 10);
     return {
-        id: 0,
+        id: 1,
         first_name: 'Dev',
         last_name: 'User',
         email: 'devuser@dognet.dev',

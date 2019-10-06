@@ -9,7 +9,7 @@ exports.seed = async function(knex) {
       let rows = []
       
       //Create 2 posts and 1 portrait for every user
-      for (var i = 1; i <= config.numberOf.users; i++){
+      for (var i = 2; i <= config.numberOf.users; i++){
           //First, posts
           for (var j = 0; j < config.numberOf.postsPerUser; j++){
               rows.push(newPhoto('post', i));
