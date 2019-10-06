@@ -7,7 +7,6 @@ import React from 'react'
 class LoginContainer extends React.Component{
     constructor(props){
         super(props)
-        console.log(props)
         this.handleClick = this.handleClick.bind(this)
     }
     async handleClick(event){
@@ -21,15 +20,17 @@ class LoginContainer extends React.Component{
             console.log('dispatching...')
             this.props.setToken(token)
         }
-        console.log(this.props.user)
     }
     render(){
-        return (
+        const login = (
             <Login 
              user={ this.props.user } 
              onClick = { this.handleClick }
              />
         )
+        
+        const loggedIn = <span>Logged In</span>
+        return this.props.user.token == null ? login : loggedIn
     }
 }
 
