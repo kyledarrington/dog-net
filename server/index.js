@@ -4,10 +4,10 @@ const port = 8081
 const cors = require('cors')
 const environment = process.env.ENVIRONMENT || 'development'
 const knexConfig = require('../knexfile.js')[environment]
-const db = require('./local/database')
 const auth = require('./local/authenticate')
 
 const knex = require('knex')(knexConfig)
+const db = require('./local/database')(knex)
 
 knexInit()
 
@@ -30,14 +30,15 @@ app.post('/login', async (req, res) => {
 
 app.get('/feed', async (req, res) => {
     try {
-        const data = req.params,
-              userData = await auth.verify(data.token),
-              posts = database.newsfeedQuery(data.page, userData.userId);
-        console.log(posts);
+        const data = req.query;
+        const userData = await auth.verifyToken(data.token)
+        let posts = []
+        if (userData) posts = await db.newsfeedQuery(data.page, userData.userId);
         res.send(posts);
     }
     catch(err){
-        
+        console.error(err)
+        res.send(err)
     }
 })
 
