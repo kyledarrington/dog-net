@@ -11,21 +11,17 @@ class Newsfeed extends React.Component{
         let elements = []
         for (var i in postArray){
             let post = postArray[i]
+            let fullName = post.userFirstName + ' ' + post.userLastName
             let e = (
                 <div className="post-container" key={i}>
-                    <div className="post-user-container">
-                        <div className="post-user-icon"><img src={post.userImgSrc} alt={post.userFullName} className="post-icon"/></div>
-                        <div className="post-user-info"><span>{post.userFullName}</span></div>
+                    <div className="post-user-icon"><img src={post.userImgSrc} alt={fullName} className="post-icon"/></div>
+                    <div className="post-user-info"><div><span>{fullName}<br />POST DATE</span></div></div>
+                    <div className="post-text">
+                        <span>{post.content}</span>
                     </div>
-                    <div className="post-content-container">
-                        <div className="post-text">
-                            <span>{post.content}</span>
-                        </div>
-                        <div className="post-image">
-                            <img src={post.imgSrc} alt={post.content} />
-                        </div>
+                    <div className="post-image">
+                        <img src={post.imgSrc} alt={post.content} />
                     </div>
-
                 </div>
             )
             elements.push(e)

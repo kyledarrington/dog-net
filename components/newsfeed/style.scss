@@ -1,33 +1,62 @@
+@import "../common/breakpoints";
+
 #newsfeed{
-    width:33%;
-    margin:auto;
+    @include respond-to('sm'){
+        width:33%;
+        margin:auto;
+    }
 }
 
 .post-container{
-    margin: 1rem 0;
+    padding-bottom: 1.5rem;
+    padding-top: 1rem;
+    display:grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 65px 100% 100%;
     background-color:#F9F9F9;
-    max-width: 475px;
-    padding: 1rem .5rem 1rem 1rem;
+    margin: 1rem 0;
+    @include respond-to('xl'){
+        max-width: 525px;
+    }
 }
 
 .post-user-icon{
-    display:inline-block;
-    vertical-align: top;
+    grid-row: 1;
+    grid-column: 1;
     width:60px;
+    height:60px;
+    margin: 0 auto;
     img{
-        border-radius:100%
+        border-radius:100%;
+        width:100%;
+        height:100%;
     }
 }
 .post-user-info{
-    display:inline-block;
+    grid-row: 1;
+    grid-column: 2;
+    div{
+        position: relative;
+        top:15%;
+    }
+    height:60px;
+    margin: auto 0;
     padding-top:.2rem;
-
 }
-.post-content-container{
-    display: inline-block;
-    margin-left: 60px;
+
+.post-text{
+    grid-column: 2;
+    grid-row: 2;
+    padding-right:2rem;
 }
 .post-image{
+    grid-column:2;
+    grid-row:3;
     margin-top:.5rem;
+    padding-right:2rem;
+    img{
+        max-width: 100%;
+        height: auto;
+    }
 }
 
