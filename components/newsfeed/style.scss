@@ -35,19 +35,22 @@
 .post-user-info{
     grid-row: 1;
     grid-column: 2;
-    div{
-        position: relative;
-        top:15%;
-    }
     height:60px;
     margin: auto 0;
     padding-top:.2rem;
+    p{
+        display: inline-block;
+        vertical-align: bottom;
+        height:100%;
+        margin: 0;
+    }
 }
 
 .post-text{
     grid-column: 2;
     grid-row: 2;
     padding-right:2rem;
+    padding-top: .25rem;
 }
 .post-image{
     grid-column:2;
