@@ -1,22 +1,30 @@
-import React from 'react'
-import Axios from 'axios'
+import React, {Component} from 'react'
+import LoginForm from '../loginform'
 
-class Login extends React.Component{
+class Login extends Component{
     render(){
-        return (
-            <div>
-                <form id="login-form">
-                    <div>
-                        <label htmlFor="email">Email</label>
-                        <input type="text" name="email" placeholder="email" />
+        return(
+            <div id="container">
+                <div id="login-bar">
+                    <div id="login-container">
+                        <LoginForm />
                     </div>
-                    <div>
-                        <label htmlFor="password">Password</label>
-                        <input type="text" name="password" placeholder="password" />
+                </div>
+                <div id="signup">
+                    <div id="signup-form-container">
+                        <form action="" id="signup-form">
+                            <label htmlFor=""></label>
+                            <input type="text" className="signup-input"/>
+                            <label htmlFor=""></label>
+                            <input type="text" className="signup-input"/>
+                            <label htmlFor=""></label>
+                            <input type="text" className="signup-input"/>
+                            <label htmlFor=""></label>
+                            <input type="text" className="signup-input"/>
+                            <label htmlFor=""></label>
+                            <input type="text" className="signup-input"/>
+                        </form>
                     </div>
-                </form>
-                <div>
-                    <button onClick={ this.props.onClick }>Login</button>
                 </div>
             </div>
         )
