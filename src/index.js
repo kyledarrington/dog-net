@@ -11,7 +11,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 import reducer from '../store/rootreducer'
 import LoadingScreen from '../components/loadingscreen'
-import App from '../components/app'
+import RootApp from '../components/app'
 
 const persistConfig = {
  key: 'root',
@@ -29,7 +29,7 @@ ReactDOM.render((
     <Provider store={store}> 
         <PersistGate loading={<LoadingScreen />} persistor={persistor}>
             <Router>
-                <App />
+                <RootApp />
             </Router>
         </PersistGate>
     </Provider>), 
