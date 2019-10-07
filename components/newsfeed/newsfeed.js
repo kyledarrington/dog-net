@@ -12,10 +12,11 @@ class Newsfeed extends React.Component{
         for (var i in postArray){
             let post = postArray[i]
             let fullName = post.userFirstName + ' ' + post.userLastName
+            let postDate = (new Date(post.postDate)).toLocaleDateString()
             let e = (
                 <div className="post-container" key={i}>
                     <div className="post-user-icon"><img src={post.userImgSrc} alt={fullName} className="post-icon"/></div>
-                    <div className="post-user-info"><div><span>{fullName}<br />POST DATE</span></div></div>
+                    <div className="post-user-info"><p>{fullName}<br />Posted {postDate}</p></div>
                     <div className="post-text">
                         <span>{post.content}</span>
                     </div>
