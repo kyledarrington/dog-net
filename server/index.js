@@ -28,6 +28,22 @@ app.post('/login', async (req, res) => {
     }
 })
 
+app.get('/validate', async (req, res) => {
+    try {
+        console.log(req.headers)
+        const token = (req.headers.authorization).replace('Bearer ', '')
+        console.log(token);
+        const user = await auth.verifyToken(token)
+        res.json({
+            isValid: (user != null)
+        })
+    }
+    catch(err){
+        console.error(err.message)
+        res.json({error : err.message})
+    }
+})
+
 app.get('/feed', async (req, res) => {
     try {
         const data = req.query;
