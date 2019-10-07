@@ -16,12 +16,14 @@ module.exports = function(knex) {
         newsfeedQuery: async (userId, page) => {
             console.log(userId)
             const query_result = await knex
-                .select('post.id', 'post.content', 'post_img.img_src as imgSrc', 'portrait_img.img_src as userImgSrc', 'user.first_name as userFirstName', 'user.last_name as userLastName')
+                .select('post.id', 'post.content', 'post.date_posted as postDate', 'post_img.img_src as imgSrc', 'portrait_img.img_src as userImgSrc', 'user.first_name as userFirstName', 
+                        'user.last_name as userLastName')
                 .from('posts as post')
                 .innerJoin('users as user', 'user.id', 'post.user_id')
                 .leftJoin('photos as post_img', 'post_img.id', 'post.photo_id')
                 .leftJoin('photos as portrait_img', 'portrait_img.id', 'user.portrait_id')
                 .where(knex.raw('post.user_id IN (SELECT following_id FROM follows WHERE follower_id = ' + userId + ')'))
+                .orderBy('postDate', 'desc')
                 .limit(5)
                 .offset(5 * (page - 1))
             console.log(query_result)
