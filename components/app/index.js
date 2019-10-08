@@ -7,23 +7,23 @@ class RootApp extends Component{
     constructor(props){
         super(props)
         this.state = {
-            loggedIn: false
+            loggedIn: false,
+            loaded: false
         }
     }
     async componentWillMount(){
         let result = {}
+        let isLoggedIn = false
         if (this.props.user.token){
             let validate = await axios.get('http://localhost:8081/validate', 
                                         {headers : {'Authorization' : 'Bearer ' + this.props.user.token}})
             result = validate.data;
-            console.log(result);
         }
-        if (result.isValid != null) {
-            this.setState({
-                loggedIn: result.isValid
-            });      
-        }
-        console.log(this.state)
+        if (result.isValid != null) isLoggedIn = result.isValid
+        this.setState({
+            loggedIn: isLoggedIn,
+            loaded: true
+        })
     }
     render(){
         return (
