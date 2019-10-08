@@ -1,10 +1,11 @@
 import React from 'react'
 import Axios from 'axios'
+import { Redirect } from 'react-router-dom'
 
 class LoginForm extends React.Component{
     render(){
-        return (
-            <div>
+        const form = (
+         <div>
                 <form id="login-form">
                     <div>
                         <label htmlFor="email">Email</label>
@@ -20,6 +21,7 @@ class LoginForm extends React.Component{
                 </div>
             </div>
         )
+        return !this.props.loggedIn ? form : <Redirect to="/" loggedIn={true} />
     }
 }
 

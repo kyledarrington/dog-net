@@ -12,7 +12,7 @@ class App extends React.Component{
         return(
             <div>
                 <Route path="/login" component={Login} />
-                <PrivateRoute path="" component={Home} loggedIn={this.props.loggedIn} />
+                <PrivateRoute path="/" component={Home} loggedIn={this.props.loggedIn} />
             </div>
         )
     }

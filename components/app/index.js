@@ -11,7 +11,7 @@ class RootApp extends Component{
             loaded: false
         }
     }
-    async componentWillMount(){
+    async componentDidMount(){
         let result = {}
         let isLoggedIn = false
         if (this.props.user.token){
@@ -28,6 +28,7 @@ class RootApp extends Component{
     render(){
         return (
             <App loggedIn={this.state.loggedIn} />
+            this.state.loaded ? <App loggedIn={this.state.loggedIn} /> : null
         )
     }
 }

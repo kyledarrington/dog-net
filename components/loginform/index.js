@@ -7,6 +7,7 @@ import React from 'react'
 class LoginFormContainer extends React.Component{
     constructor(props){
         super(props)
+        this.state = {loggedIn : false}
         this.handleClick = this.handleClick.bind(this)
     }
     async handleClick(event){
@@ -17,20 +18,18 @@ class LoginFormContainer extends React.Component{
         }
         let token = (await axios.post('http://localhost:8081/login', payload)).data
         if(token){
-            console.log('dispatching...')
             this.props.setToken(token)
+            this.setState({loggedIn: true})
         }
     }
     render(){
-        const login = (
+        return (
             <LoginForm 
-             user={ this.props.user } 
+             user={ this.props.user }
+             loggedIn={ this.state.loggedIn }
              onClick = { this.handleClick }
              />
         )
-        
-        const loggedIn = <span>Logged In</span>
-        return this.props.user.token == null ? login : loggedIn
     }
 }
 
