@@ -14,7 +14,6 @@ module.exports = function(knex) {
             else return null
         },
         newsfeedQuery: async (userId, page) => {
-            console.log(userId)
             const query_result = await knex
                 .select('post.id', 'post.content', 'post.date_posted as postDate', 'post_img.img_src as imgSrc', 'portrait_img.img_src as userImgSrc', 'user.first_name as userFirstName', 
                         'user.last_name as userLastName')
@@ -26,7 +25,6 @@ module.exports = function(knex) {
                 .orderBy('postDate', 'desc')
                 .limit(5)
                 .offset(5 * (page - 1))
-            console.log(query_result)
             return query_result
         }
     }

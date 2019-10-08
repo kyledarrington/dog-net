@@ -30,9 +30,7 @@ app.post('/login', async (req, res) => {
 
 app.get('/validate', async (req, res) => {
     try {
-        console.log(req.headers)
         const token = (req.headers.authorization).replace('Bearer ', '')
-        console.log(token);
         const user = await auth.verifyToken(token)
         res.json({
             isValid: (user != null)
