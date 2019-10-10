@@ -1,5 +1,4 @@
 export default (state = {}, action) => {
-    console.log('dispatched');
     let newState = Object.assign({}, state)
     switch(action.type){
         case 'SET_TOKEN' :
