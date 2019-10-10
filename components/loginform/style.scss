@@ -1,0 +1,34 @@
+@import "../common/palette";
+
+#login-form-container{
+    display:inline-block;
+    height:100%;
+    vertical-align: bottom;
+    margin-right: 5rem;
+}
+#login-form{
+    display: inline-block;
+    position: relative;
+    top:50%;
+}
+.login-input{
+    display: inline-block;
+    input{
+        border: none;
+        box-shadow: none;
+        font-family: 'Merriweather Sans', sans-serif;
+        margin-right: 1rem;
+    }
+}
+
+#login-submit{
+    display: inline-block;
+    position: relative;
+    top:50%;
+    button{
+        display:inline-block;
+        box-shadow: none;
+        border: solid 1px $blue2;
+        padding: 2px 2rem;
+    }
+}
