@@ -7,7 +7,7 @@ class NavBar extends React.Component{
         var items = []
         for (var i = 0; i < optionArray.length; i++){
             var option = optionArray[i];
-            items.push(<div><span key={i}>{ option }</span></div>)
+            items.push(<div key={i}><span>{ option }</span></div>)
         }
         return items
     }

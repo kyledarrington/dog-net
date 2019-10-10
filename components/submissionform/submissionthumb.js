@@ -9,7 +9,7 @@ class SubmissionThumb extends React.Component{
         }
     }
     
-    componentWillReceiveProps(newProps){
+    componentDidUpdate(newProps){
         if (!newProps.file){return}
         
         this.setState({loading:true}, () => {
