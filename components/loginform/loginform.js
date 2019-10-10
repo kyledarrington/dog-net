@@ -1,22 +1,21 @@
 import React from 'react'
 import Axios from 'axios'
 import { Redirect } from 'react-router-dom'
+import './style.scss'
 
 class LoginForm extends React.Component{
     render(){
         const form = (
-         <div>
+            <div id="login-form-container">
                 <form id="login-form">
-                    <div>
-                        <label htmlFor="email">Email</label>
+                    <div className="login-input">
                         <input type="text" name="email" placeholder="email" />
                     </div>
-                    <div>
-                        <label htmlFor="password">Password</label>
+                    <div className="login-input">
                         <input type="text" name="password" placeholder="password" />
                     </div>
                 </form>
-                <div>
+                <div id="login-submit">
                     <button onClick={ this.props.onClick }>Login</button>
                 </div>
             </div>

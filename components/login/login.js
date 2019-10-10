@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import LoginForm from '../loginform'
+import './style.scss'
 
 class Login extends Component{
     render(){
