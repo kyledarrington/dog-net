@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import LoginForm from '../loginform'
+import SignupFormContainer from '../signupform'
 import './style.scss'
 
 class Login extends Component{
@@ -13,18 +14,7 @@ class Login extends Component{
                 </div>
                 <div id="signup">
                     <div id="signup-form-container">
-                        <form action="" id="signup-form">
-                            <label htmlFor=""></label>
-                            <input type="text" className="signup-input"/>
-                            <label htmlFor=""></label>
-                            <input type="text" className="signup-input"/>
-                            <label htmlFor=""></label>
-                            <input type="text" className="signup-input"/>
-                            <label htmlFor=""></label>
-                            <input type="text" className="signup-input"/>
-                            <label htmlFor=""></label>
-                            <input type="text" className="signup-input"/>
-                        </form>
+                        <SignupFormContainer />
                     </div>
                 </div>
             </div>

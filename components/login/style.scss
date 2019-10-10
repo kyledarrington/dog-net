@@ -7,3 +7,15 @@
 #login-container{
     float:right;
 }
+
+#signup{
+    display:grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto 1fr auto
+}
+
+#signup-form-container{
+    grid-row: 1;
+    grid-column: 7 / 13;
+    margin-top: 2rem;
+}

@@ -27,8 +27,12 @@
     top:50%;
     button{
         display:inline-block;
-        box-shadow: none;
-        border: solid 1px $blue2;
+        box-shadow: 25px 25px ;
+        background-color : $blue1;
+        box-shadow: 2px 2px 1px darken($blue1, 10%);
+        color: white;
+        font-family: 'Merriweather Sans', sans-serif;
+        border: none;
         padding: 2px 2rem;
     }
 }
