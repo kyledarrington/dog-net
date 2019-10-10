@@ -27,8 +27,7 @@ class RootApp extends Component{
     }
     render(){
         return (
-            <App loggedIn={this.state.loggedIn} />
-            this.state.loaded ? <App loggedIn={this.state.loggedIn} /> : null
+            this.state.loaded ? <App loggedIn={this.props.user.token != null} /> : null
         )
     }
 }
