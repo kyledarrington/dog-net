@@ -27,7 +27,8 @@
     top:50%;
     button{
         display:inline-block;
-        box-shadow: 25px 25px ;
+        height: 18.5px;
+        box-shadow: 25px 25px;
         background-color : $blue1;
         box-shadow: 2px 2px 1px darken($blue1, 10%);
         color: white;
