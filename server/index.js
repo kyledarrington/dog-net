@@ -5,6 +5,7 @@ const cors = require('cors')
 const environment = process.env.ENVIRONMENT || 'development'
 const knexConfig = require('../knexfile.js')[environment]
 const auth = require('./local/authenticate')
+const bcrypt = require('bcrypt')
 
 const knex = require('knex')(knexConfig)
 const db = require('./local/database')(knex)
@@ -25,6 +26,25 @@ app.post('/login', async (req, res) => {
     catch(err){
         console.error(err)
         res.send(err)
+    }
+})
+
+app.post('/signup', async(req, res) => {
+    let data = req.body
+    let hash = await bcrypt.hash(data.password, 10)
+    let user = {
+          first_name: data.firstName,
+          last_name: data.lastName,
+          email: data.email,
+          password_hash: hash,
+          verified: false     
+    }
+    try{
+        const result = await db.userInsert(user)
+        res.send(result)
+    }
+    catch(err){
+        console.error(err.message)
     }
 })
 

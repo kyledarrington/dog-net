@@ -26,6 +26,11 @@ module.exports = function(knex) {
                 .limit(5)
                 .offset(5 * (page - 1))
             return query_result
+        },
+        userInsert: async user => {
+            const result = await knex('users')
+                .insert(user)
+            return result
         }
     }
 }
