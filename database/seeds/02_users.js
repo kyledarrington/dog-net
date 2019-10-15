@@ -41,7 +41,8 @@ const newDummyUser = async (userId, portraitId) => {
           last_name: faker.name.lastName(),
           email: 'dummy' + '+' + userId + '@dognet.dev',
           portrait_id: portraitId,
-          password_hash: hash
+          password_hash: hash,
+          verified: true
     }
 }
 
@@ -52,6 +53,7 @@ const newDevUser = async (email, password) => {
         first_name: 'Dev',
         last_name: 'User',
         email: 'devuser@dognet.dev',
-        password_hash: await bcrypt.hash('dognet', 10)
+        password_hash: await bcrypt.hash('dognet', 10),
+        verified: true
     }
 }
