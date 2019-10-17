@@ -27,6 +27,19 @@ module.exports = function(knex) {
                 .offset(5 * (page - 1))
             return query_result
         },
+        profileQuery : async (userId) => {
+            const query_result = await knex
+                .select('id', 'first_name', 'last_name')
+                .from('users')
+                .where('id', '=', userId)
+                .union(function() {
+                    this.select('id', 'user_id', 'date_posted')
+                    .from('posts')
+                    .where('user_id', '=', userId)
+                    .limit(1)
+                })
+            return query_result
+        },
         userInsert: async user => {
             const result = await knex('users')
                 .insert(user)

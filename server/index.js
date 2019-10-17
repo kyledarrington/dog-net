@@ -76,6 +76,18 @@ app.get('/feed', async (req, res) => {
     }
 })
 
+app.get('/profile/:userid', async (req, res) => {
+    try {
+        const result = await db.profileQuery(req.params.userid)
+        res.send(result);
+    }
+    catch(err){
+        console.error(err)
+        res.send(err)
+    }
+})
+
+
 app.listen(port, () => console.log(`Listening on port ${port}.`))
 
 async function knexInit() {
