@@ -67,7 +67,7 @@ app.get('/feed', async (req, res) => {
         const data = req.query;
         const userData = await auth.verifyToken(req.headers)
         let posts = []
-        if (userData) posts = await db.newsfeedQuery(data.page, userData.userId);
+        if (userData) posts = await db.postQuery(userData.userId, data.page, 'newsfeed');
         res.send(posts);
     }
     catch(err){
@@ -78,8 +78,14 @@ app.get('/feed', async (req, res) => {
 
 app.get('/profile/:userid', async (req, res) => {
     try {
-        const result = await db.profileQuery(req.params.userid)
-        res.send(result);
+        const loggedInUser = await auth.verifyToken(req.headers)
+        const userQueryResult = await db.userQuery(req.params.userid)
+        const payload = {
+            user : userQueryResult[0],
+            posts : await db.postQuery(req.params.userid, 0, 'profile'),
+            isFollowing : await db.isFollowing(loggedInUser.userId, userQueryResult[0].id)
+        }
+        res.json(payload);
     }
     catch(err){
         console.error(err)

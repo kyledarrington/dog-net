@@ -13,31 +13,36 @@ module.exports = function(knex) {
             if (query_result) return query_result[0]
             else return null
         },
-        newsfeedQuery: async (userId, page) => {
+        postQuery: async (userId, page, type) => {
+            console.log(userId)
             const query_result = await knex
                 .select('post.id', 'post.content', 'post.date_posted as postDate', 'post_img.img_src as imgSrc', 'portrait_img.img_src as userImgSrc', 'user.first_name as userFirstName', 
-                        'user.last_name as userLastName')
+                        'user.last_name as userLastName', 'user.id as userId')
                 .from('posts as post')
                 .innerJoin('users as user', 'user.id', 'post.user_id')
                 .leftJoin('photos as post_img', 'post_img.id', 'post.photo_id')
                 .leftJoin('photos as portrait_img', 'portrait_img.id', 'user.portrait_id')
-                .where(knex.raw('post.user_id IN (SELECT following_id FROM follows WHERE follower_id = ' + userId + ')'))
+                .modify((query) => {
+                    switch(type){
+                        case 'profile':
+                            query.where('user.id', '=', userId)
+                            break
+                        case 'newsfeed':
+                            query.where(knex.raw('post.user_id IN (SELECT following_id FROM follows WHERE follower_id = ' + userId + ')'))
+                            break
+                    }
+                })
                 .orderBy('postDate', 'desc')
                 .limit(5)
                 .offset(5 * (page - 1))
             return query_result
         },
-        profileQuery : async (userId) => {
+        userQuery : async (userId) => {
             const query_result = await knex
-                .select('id', 'first_name', 'last_name')
-                .from('users')
-                .where('id', '=', userId)
-                .union(function() {
-                    this.select('id', 'user_id', 'date_posted')
-                    .from('posts')
-                    .where('user_id', '=', userId)
-                    .limit(1)
-                })
+                .select('user.id', 'first_name', 'last_name', 'email', 'portrait.img_src as portraitSrc')
+                .from('users as user')
+                .leftJoin('photos as portrait', 'portrait.id', 'user.portrait_id')
+                .where('user.id', '=', userId)
             return query_result
         },
         userInsert: async user => {
