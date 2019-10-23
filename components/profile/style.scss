@@ -1,0 +1,34 @@
+@import '../common/palette';
+
+#profile-container{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+#info-container{
+    padding: 5% 0 0 10%;
+    margin: 20px 0 0 20px;
+    height: 250px;
+    grid-column: 1 / 4;
+    grid-row: 1;
+    background-color: white;
+    #portrait{
+        display: inline-block;
+         img{
+            border-radius: 100%;
+        }
+    }
+    #basic-info{
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 1em;
+        h3, p{
+            margin: 0;
+        }
+    }
+}
+
+#profile-feed{
+    grid-column: 5 / 10;
+    grid-row: 1/99;
+}
