@@ -1,5 +1,5 @@
 import React from "react";
-import {shape, string, number} from 'prop-types'
+import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 
 function Post(props) {
@@ -29,13 +29,14 @@ function Post(props) {
 }
 
 Post.propTypes = {
-    data : shape({
-        userFirstName : string,
-        userLastName : string,
-        userImgSrc : string,
-        imgSrc : string,
-        content : string,
-        postDate : number
+    data : PropTypes.shape({
+        userId : PropTypes.string,
+        userFirstName : PropTypes.string,
+        userLastName : PropTypes.string,
+        userImgSrc : PropTypes.string,
+        imgSrc : PropTypes.string,
+        content : PropTypes.string,
+        postDate : PropTypes.number
     })
 }
 

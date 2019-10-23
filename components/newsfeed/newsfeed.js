@@ -1,6 +1,7 @@
-import {object, array, string} from 'prop-types'
+import PropTypes from 'prop-types'
 import React from 'react'
 import SubmissionForm from '../submissionform/submissionform'
+import Post from '../post/post'
 
 class Newsfeed extends React.Component{
     constructor(props){
@@ -23,6 +24,10 @@ class Newsfeed extends React.Component{
             </div>
         )
     }
+}
+
+Newsfeed.propTypes = {
+    posts : PropTypes.arrayOf(PropTypes.object)
 }
 
 export default Newsfeed

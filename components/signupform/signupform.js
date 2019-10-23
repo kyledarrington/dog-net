@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import './style.scss'
+import PropTypes from 'prop-types'
 
 class SignupForm extends Component{
     render(){
@@ -34,6 +35,12 @@ class SignupForm extends Component{
             </div>
         )
     }
+}
+
+SignupForm.propTypes = {
+    onInputChange: PropTypes.func,
+    onButtonClick : PropTypes.func,
+    errors: PropTypes.object
 }
 
 export default SignupForm

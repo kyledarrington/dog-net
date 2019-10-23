@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class SubmissionThumb extends React.Component{
     constructor(props){
@@ -32,5 +33,9 @@ class SubmissionThumb extends React.Component{
         }
     }
 }
-    
+
+SubmissionThumb.propTypes = {
+    file : PropTypes.object,
+}
+
 export default SubmissionThumb
