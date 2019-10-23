@@ -22,7 +22,8 @@ module.exports = {
             return token
         }
     },
-    verifyToken : async (token) => {
+    verifyToken : async ({authorization : auth}) => {
+        const token = auth.replace('Bearer ', '')
         try{
             const SECRET = process.env.JWT_PRIVATE
             return await jwt.verify(token, SECRET)

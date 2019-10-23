@@ -50,8 +50,7 @@ app.post('/signup', async(req, res) => {
 
 app.get('/validate', async (req, res) => {
     try {
-        const token = (req.headers.authorization).replace('Bearer ', '')
-        const user = await auth.verifyToken(token)
+        const user = await auth.verifyToken(req.headers)
         res.json({
             isValid: (user != null)
         })
@@ -65,7 +64,7 @@ app.get('/validate', async (req, res) => {
 app.get('/feed', async (req, res) => {
     try {
         const data = req.query;
-        const userData = await auth.verifyToken(data.token)
+        const userData = await auth.verifyToken(req.headers)
         let posts = []
         if (userData) posts = await db.newsfeedQuery(data.page, userData.userId);
         res.send(posts);
