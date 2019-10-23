@@ -84,6 +84,31 @@ app.get('/profile/:userid', async (req, res) => {
     catch(err){
         console.error(err)
         res.send(err)
+app.get('/users/follow/:followingId', async (req, res) => {
+    try {
+        const loggedInUser = await auth.verifyToken(req.headers)
+        let followingId = req.params.followingId
+        let followerId = loggedInUser.userId
+        let result = await db.followInsert(followerId, followingId)
+        res.send(result)
+    }
+    catch(err){
+        console.error(err)
+        res.json({error : err.message})
+    }
+})
+
+app.delete('/users/follow/:followingId', async(req, res) => {
+    try {
+        const loggedInUser = await auth.verifyToken(req.headers)
+        let followingId = req.params.followingId
+        let followerId = loggedInUser.userId
+        let result = await db.followDelete(followerId, followingId)
+        res.sendStatus(200)
+    }
+    catch(err){
+        console.error(err)
+        res.json({error : err.message})
     }
 })
 

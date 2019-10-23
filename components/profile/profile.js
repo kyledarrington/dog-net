@@ -8,6 +8,9 @@ class Profile extends Component{
     }
     render(){
         const user = this.props.user
+        const followButton = !this.props.isFollowing 
+            ? <button onClick={this.props.onFollowClick}>Follow</button> 
+            : <button onClick={this.props.onUnfollowClick}>Unfollow</button>
         return (
             <div id="profile-container">
                 <div id="info-container">
@@ -17,6 +20,7 @@ class Profile extends Component{
                     <div id="basic-info">
                         <h3>{user.first_name + ' ' + user.last_name}</h3>
                         <p>{user.email}</p>
+                        <div>{ followButton }</div>
                     </div>
                 </div>
                 <div id="profile-feed">

@@ -44,6 +44,27 @@ module.exports = function(knex) {
             const result = await knex('users')
                 .insert(user)
             return result
+        },
+        isFollowing : async (follower, following) =>{
+            console.log(following + '; ' + follower)
+            const params = {follower_id : follower, following_id: following}
+            const result = await knex
+                .select('id')
+                .from('follows')
+                .where(params)
+                .limit(1)
+            return (result.length > 0)
+        },
+        followInsert: async (follower, following) =>{
+            const payload = {follower_id : follower, following_id: following}
+            const result = await knex('follows')
+                .insert(payload)
+            return result
+        },
+        followDelete: async (follower, following) =>{
+            return await knex('follows')
+                .where({follower_id : follower, following_id : following})
+                .del()
         }
     }
 }
