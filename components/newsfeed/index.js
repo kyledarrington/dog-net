@@ -13,7 +13,6 @@ class NewsfeedContainer extends React.Component{
     }
     async componentDidMount(){
         if (!this.props.user.token) return
-        let queriedPosts = (await axios.get('http://localhost:8081/feed?page=1&token=' + this.props.user.token)).data;
         this.getPosts(this.props.user.token)
         return
     }
@@ -23,10 +22,9 @@ class NewsfeedContainer extends React.Component{
         return
     }
     async getPosts(token){
-        let queriedPosts = (await axios.get('http://localhost:8081/feed?page=1&token=' + token)).data;
-        if (queriedPosts){
-            this.setState({posts: queriedPosts})
-        }
+        let postQueryResult = (await axios.get('http://localhost:8081/feed?page=1',  
+            {headers : {'Authorization' : 'Bearer ' + this.props.user.token}}));
+        this.setState({posts: postQueryResult.data})
     }
     render(){
         return <Newsfeed posts={this.state.posts} />
