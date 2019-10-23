@@ -25,7 +25,7 @@ app.post('/login', async (req, res) => {
     }
     catch(err){
         console.error(err)
-        res.send(err)
+        res.json({error : err.message})
     }
 })
 
@@ -45,6 +45,7 @@ app.post('/signup', async(req, res) => {
     }
     catch(err){
         console.error(err.message)
+        res.json({error : err.message})
     }
 })
 
@@ -56,7 +57,7 @@ app.get('/validate', async (req, res) => {
         })
     }
     catch(err){
-        console.error(err.message)
+        console.error(err)
         res.json({error : err.message})
     }
 })
@@ -71,7 +72,7 @@ app.get('/feed', async (req, res) => {
     }
     catch(err){
         console.error(err)
-        res.send(err)
+        res.json({error : err.message})
     }
 })
 
@@ -82,7 +83,10 @@ app.get('/profile/:userid', async (req, res) => {
     }
     catch(err){
         console.error(err)
-        res.send(err)
+        res.json({error : err.message})
+    }
+})
+
 app.get('/users/follow/:followingId', async (req, res) => {
     try {
         const loggedInUser = await auth.verifyToken(req.headers)
