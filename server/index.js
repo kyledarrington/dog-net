@@ -18,10 +18,14 @@ app.use(express.json())
 
 app.post('/login', async (req, res) => {
     try{
+        let userInfo = {}
         const data = req.body,
-              user = await db.loginQuery(data.email, knex),
-              token = (user != null) ? await auth.getLoginToken(user, data.password) : null
-        res.send(token)
+              userRow = await db.loginQuery(data.email, knex),
+              token = (userRow != null) ? await auth.getLoginToken(userRow, data.password) : null
+        if (token) {
+            userInfo = {token : token, id : userRow.id}
+        }
+        res.json(userInfo)
     }
     catch(err){
         console.error(err)
