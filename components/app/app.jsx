@@ -13,7 +13,7 @@ class App extends React.Component{
                 <Switch>
                     <Route path="/login" component={Login} />
                     <Route path="/profile/:userid" component={ProfileContainer} />
-                    <PrivateRoute path="/" component={Home} loggedIn={this.props.loggedIn} />
+                    <PrivateRoute exact path="/" component={Home} loggedIn={this.props.loggedIn} />
                 </Switch>
             </div>
         )

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import Newsfeed from './newsfeed.js'
+import Newsfeed from './newsfeed'
 import './style.scss'
 
 class NewsfeedContainer extends React.Component{

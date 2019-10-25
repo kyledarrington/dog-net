@@ -27,6 +27,7 @@ class ProfileContainer extends Component{
         if(result.statusText === 'OK') this.setState({isFollowing : false});
     }
     async componentDidMount(){
+        console.log(this.props.user.token)
         const { params } = this.props.match
         console.log(params.userid)
         let profileQuery = await axios.get('http://localhost:8081/profile/' + params.userid, 

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { setToken } from '../../store/actions'
 import axios from 'axios'
-import LoginForm from './loginform.js'
+import LoginForm from './loginform'
 import React from 'react'
 
 class LoginFormContainer extends React.Component{
@@ -16,9 +16,9 @@ class LoginFormContainer extends React.Component{
             email : data.get('email'),
             password: data.get('password')
         }
-        let token = (await axios.post('http://localhost:8081/login', payload)).data
-        if(token){
-            this.props.setToken(token)
+        let user = (await axios.post('http://localhost:8081/login', payload)).data
+        if(user){
+            this.props.setToken(user)
             this.setState({loggedIn: true})
         }
     }
@@ -40,8 +40,8 @@ const mapStateToProps = (state) =>{
 }
 const mapDispatchToProps = dispatch => {
     return { 
-        setToken : token => {
-            dispatch(setToken(token))
+        setToken : user => {
+            dispatch(setToken(user))
         }
     }
 }
